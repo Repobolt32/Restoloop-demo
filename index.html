@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sharma's Family Restaurant – Dashboard</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@500;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Ambient Glow Orbs -->
+    <div class="orb orb-tl"></div>
+    <div class="orb orb-br"></div>
+
+    <div class="shell">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>
+                <span class="sidebar-brand">Restoloop</span>
+            </div>
+
+            <nav class="nav">
+                <span class="nav-label">MAIN MENU</span>
+                <a href="#" class="nav-item active" id="nav-dashboard">
+                    <i data-lucide="layout-dashboard"></i><span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item" id="nav-customers">
+                    <i data-lucide="users"></i><span>Customers</span>
+                </a>
+                <a href="#" class="nav-item" id="nav-coupons">
+                    <i data-lucide="ticket"></i><span>Coupons</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i data-lucide="message-circle"></i><span>WhatsApp</span>
+                </a>
+
+                <span class="nav-label mt">ANALYTICS</span>
+                <a href="#" class="nav-item">
+                    <i data-lucide="bar-chart-2"></i><span>Revenue</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i data-lucide="activity"></i><span>Activity</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i data-lucide="file-text"></i><span>Reports</span>
+                </a>
+
+                <span class="nav-label mt">SETTINGS</span>
+                <a href="#" class="nav-item">
+                    <i data-lucide="qr-code"></i><span>QR Setup</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i data-lucide="settings"></i><span>Settings</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <a href="#" class="nav-item">
+                    <i data-lucide="log-out"></i><span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- MAIN -->
+        <div class="main-wrap">
+            
+            <!-- TOPNAV -->
+            <header class="topbar">
+                <button class="hamburger" id="hamburger" aria-label="Menu">
+                    <i data-lucide="menu"></i>
+                </button>
+                <div class="breadcrumb">
+                    <div class="home-pill"><i data-lucide="home" class="xs-icon"></i></div>
+                    <i data-lucide="chevron-right" class="xs-icon muted"></i>
+                    <div class="bc-text">
+                        <div class="bc-title">Overviews</div>
+                        <div class="bc-sub">Sharma's Family Restaurant, Connaught Place</div>
+                    </div>
+                </div>
+                <div class="topbar-right">
+                    <div class="search-box">
+                        <i data-lucide="search" class="xs-icon muted"></i>
+                        <input type="text" placeholder="Search...">
+                    </div>
+                    <div class="profile-chip">
+                        <div class="avatar-circle">RS</div>
+                        <div class="profile-info">
+                            <span class="p-name">Rajesh Sharma</span>
+                            <span class="p-handle">@sharmas_family</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="content">
+
+                <!-- ROW 1 – Stat Cards (Order: Customers, Messages, Coupons, Revenue) -->
+                <div class="stats-row">
+                    <div class="card stat-card">
+                        <div class="sc-content">
+                            <div class="sc-label">TOTAL CUSTOMERS</div>
+                            <div class="sc-val">142</div>
+                            <div class="sc-foot">
+                                <span class="sc-sub">Registered via QR</span>
+                                <span class="chip up">↑ 32.5%</span>
+                            </div>
+                        </div>
+                        <div class="sc-iconbox"><i data-lucide="clock" class="sm-icon"></i></div>
+                    </div>
+                    
+                    <div class="card stat-card">
+                        <div class="sc-content">
+                            <div class="sc-label">MESSAGES SENT</div>
+                            <div class="sc-val">89</div>
+                            <div class="sc-foot">
+                                <span class="sc-sub">Via WhatsApp</span>
+                                <span class="chip up">↑ 15.2%</span>
+                            </div>
+                        </div>
+                        <div class="sc-iconbox"><i data-lucide="zap" class="sm-icon"></i></div>
+                    </div>
+
+                    <div class="card stat-card">
+                        <div class="sc-content">
+                            <div class="sc-label">COUPONS REDEEMED</div>
+                            <div class="sc-val">124</div>
+                            <div class="sc-foot">
+                                <span class="sc-sub">By returning customers</span>
+                                <span class="chip up">↑ 24.1%</span>
+                            </div>
+                        </div>
+                        <div class="sc-iconbox"><i data-lucide="users" class="sm-icon"></i></div>
+                    </div>
+
+                    <div class="card stat-card highlighted">
+                        <div class="sc-content">
+                            <div class="sc-label">REVENUE ATTRIBUTED</div>
+                            <div class="sc-val text-brand">₹11,320</div>
+                            <div class="sc-foot">
+                                <span class="sc-sub">From returning</span>
+                                <span class="chip up">↑ 25.8%</span>
+                            </div>
+                        </div>
+                        <div class="sc-iconbox"><i data-lucide="indian-rupee" class="sm-icon"></i></div>
+                    </div>
+                </div>
+
+                <!-- ROW 2 – Two Columns (Top) -->
+                <div class="grid-row">
+                    <!-- 65% Bar Chart -->
+                    <div class="card chart-card chart-panel left-col">
+                        <div class="card-header">
+                            <h3 class="card-title">Analytics (Last 6 Months)</h3>
+                            <div class="dropdown-pill">Revenue <i data-lucide="chevron-down" class="xs-icon"></i></div>
+                        </div>
+                        <div class="bar-chart-wrap">
+                            <canvas id="barChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- 35% Donut Widget -->
+                    <div class="card donut-card chart-panel right-col">
+                        <div class="card-header">
+                            <h3 class="card-title">Revenue</h3>
+                            <i data-lucide="more-horizontal" class="sm-icon muted"></i>
+                        </div>
+                        <div class="donut-legend">
+                            <span class="legend-dot orange"></span><span class="legend-label">Income</span>
+                            <span class="legend-dot green"></span><span class="legend-label">Expenses</span>
+                        </div>
+                        <div class="donut-wrap">
+                            <canvas id="donutCanvas"></canvas>
+                            <div class="donut-center">
+                                <span class="donut-val">₹11,320</span>
+                                <span class="donut-sub">March 2026</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ROW 3 – Two Columns (Bottom) -->
+                <div class="grid-row align-starts">
+                    <!-- 65% Activity Feed -->
+                    <div class="card activity-card chart-panel left-col">
+                        <div class="card-header">
+                            <h3 class="card-title">Recent Activity</h3>
+                        </div>
+                        <div class="tabs">
+                            <button class="tab-btn active" data-tab="signups">Recent Signups</button>
+                            <button class="tab-btn" data-tab="redemptions">Redemptions</button>
+                        </div>
+
+                        <div class="tab-pane active" id="tab-signups">
+                            <div class="activity-list">
+                                <div class="act-item">
+                                    <div class="act-av">R</div>
+                                    <div class="act-info"><p class="act-name">Rahul Sharma</p><p class="act-time">Today, 2:14 PM</p></div>
+                                    <div class="act-badge">✅ WELCOME50</div>
+                                </div>
+                                <div class="act-item">
+                                    <div class="act-av">P</div>
+                                    <div class="act-info"><p class="act-name">Priya Verma</p><p class="act-time">Today, 11:30 AM</p></div>
+                                    <div class="act-badge">✅ WELCOME50</div>
+                                </div>
+                                <div class="act-item">
+                                    <div class="act-av">A</div>
+                                    <div class="act-info"><p class="act-name">Ankit Joshi</p><p class="act-time">Yesterday</p></div>
+                                    <div class="act-badge">✅ WELCOME50</div>
+                                </div>
+                                <div class="act-item">
+                                    <div class="act-av">M</div>
+                                    <div class="act-info"><p class="act-name">Meena Patel</p><p class="act-time">2 days ago</p></div>
+                                    <div class="act-badge">✅ WELCOME50</div>
+                                </div>
+                                <div class="act-item">
+                                    <div class="act-av">S</div>
+                                    <div class="act-info"><p class="act-name">Suresh Kumar</p><p class="act-time">3 days ago</p></div>
+                                    <div class="act-badge">✅ WELCOME50</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane" id="tab-redemptions">
+                            <div class="activity-list">
+                                <div class="act-item">
+                                    <div class="act-av orange-av">M</div>
+                                    <div class="act-info"><p class="act-name">Meena Patel</p><p class="act-time">Today • Bill: ₹480</p></div>
+                                    <div class="act-right"><span class="act-code">HELLO30</span><span class="act-disc">-₹30</span></div>
+                                </div>
+                                <div class="act-item">
+                                    <div class="act-av orange-av">S</div>
+                                    <div class="act-info"><p class="act-name">Suresh Kumar</p><p class="act-time">Yesterday • Bill: ₹720</p></div>
+                                    <div class="act-right"><span class="act-code">WELCOME50</span><span class="act-disc">-₹50</span></div>
+                                </div>
+                                <div class="act-item">
+                                    <div class="act-av orange-av">D</div>
+                                    <div class="act-info"><p class="act-name">Deepika Singh</p><p class="act-time">2 days ago • Bill: ₹390</p></div>
+                                    <div class="act-right"><span class="act-code">HAPPYBDAY</span><span class="act-disc">-₹38</span></div>
+                                </div>
+                                <div class="act-item">
+                                    <div class="act-av orange-av">A</div>
+                                    <div class="act-info"><p class="act-name">Ankit Joshi</p><p class="act-time">3 days ago • Bill: ₹610</p></div>
+                                    <div class="act-right"><span class="act-code">WELCOME50</span><span class="act-disc">-₹50</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 35% Active Coupons -->
+                    <div class="right-col-stack right-col">
+                        <div class="card coupon-card chart-panel">
+                            <div class="card-header">
+                                <h3 class="card-title">Active Coupon Types</h3>
+                                <span class="auto-badge"><i data-lucide="zap" class="xs-icon"></i> Auto</span>
+                            </div>
+                            <div class="coupon-list">
+                                <div class="coupon-row">
+                                    <div class="c-left">
+                                        <div class="c-code">WELCOME50</div>
+                                        <div class="c-trigger">Customer signs up via QR</div>
+                                    </div>
+                                    <div class="c-stats">
+                                        <div class="c-stat"><span class="cs-label">Sent</span><span class="cs-val">142</span></div>
+                                        <div class="c-stat"><span class="cs-label">Redeemed</span><span class="cs-val text-green">8</span></div>
+                                    </div>
+                                </div>
+                                <div class="coupon-row">
+                                    <div class="c-left">
+                                        <div class="c-code">HAPPYBDAY</div>
+                                        <div class="c-trigger">Birthday <span class="mini-tag">Auto</span></div>
+                                    </div>
+                                    <div class="c-stats">
+                                        <div class="c-stat"><span class="cs-label">Sent</span><span class="cs-val">12</span></div>
+                                        <div class="c-stat"><span class="cs-label">Redeemed</span><span class="cs-val text-green">6</span></div>
+                                    </div>
+                                </div>
+                                <div class="coupon-row">
+                                    <div class="c-left">
+                                        <div class="c-code">HELLO30</div>
+                                        <div class="c-trigger">Inactive 40+ days <span class="mini-tag">Auto</span></div>
+                                    </div>
+                                    <div class="c-stats">
+                                        <div class="c-stat"><span class="cs-label">Sent</span><span class="cs-val">38</span></div>
+                                        <div class="c-stat"><span class="cs-label">Redeemed</span><span class="cs-val text-green">4</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Footer Credits Bar -->
+                        <div class="credits-bar">
+                            <div class="credits-main">
+                                <div class="cr-info">
+                                    <span class="cr-label">Credits Remaining</span>
+                                    <strong class="cr-bold">347 / 500</strong>
+                                </div>
+                                <span class="cr-muted">~258 messages left</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-fill" style="width:69.4%"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div><!-- /content -->
+        </div><!-- /main-wrap -->
+    </div><!-- /shell -->
+
+    <div class="sidebar-overlay" id="overlay"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
