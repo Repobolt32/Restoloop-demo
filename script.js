@@ -1,16 +1,18 @@
 lucide.createIcons();
 
 const hamburger = document.getElementById('hamburger');
-const sidebar   = document.getElementById('sidebar');
-const overlay   = document.getElementById('overlay');
+const sidebar   = document.querySelector('.sidebar');
+const scrim     = document.querySelector('.sidebar-scrim');
 
 hamburger.addEventListener('click', () => {
     sidebar.classList.toggle('open');
-    overlay.classList.toggle('show');
+    scrim.classList.toggle('active');
 });
-overlay.addEventListener('click', () => {
+
+// Close when clicking outside
+scrim.addEventListener('click', () => {
     sidebar.classList.remove('open');
-    overlay.classList.remove('show');
+    scrim.classList.remove('active');
 });
 
 // ACTIVITY TABS
