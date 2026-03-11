@@ -160,6 +160,9 @@ body {
     display: flex; flex-direction: column;
     height: 100vh; position: sticky; top: 0; z-index: 100;
     transition: transform .3s ease;
+    will-change: transform; /* Fixes mobile blur bleeding */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
 .sidebar-logo {
@@ -493,8 +496,8 @@ body {
 .sm-icon { width: 16px; height: 16px; }
 
 .sidebar-overlay {
-    display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 90;
-    backdrop-filter: blur(4px);
+    display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 90;
+    /* Removed backdrop-filter to prevent severe mobile Chrome rendering bugs */
 }
 .sidebar-overlay.show { display: block; }
 
@@ -509,7 +512,10 @@ body {
 }
 
 @media (max-width: 768px) {
-    .sidebar { position: fixed; left: 0; transform: translateX(-100%); }
+    .sidebar { 
+        position: fixed; left: 0; transform: translateX(-100%); 
+        background: rgba(8, 8, 8, 0.90); /* Darker on mobile for readability */
+    }
     .sidebar.open { transform: translateX(0); }
     .hamburger { display: block; }
     .topbar { padding: 1rem; }
@@ -519,3 +525,4 @@ body {
     .stat-card { padding: 1rem; }
     html { font-size: 13px; }
 }
+
